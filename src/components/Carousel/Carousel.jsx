@@ -3,6 +3,7 @@ import "./Carousel.css"
 import AuthorCard from "../AuthorCard/AuthorCard"
 import Card from "../Card/Card"
 import CarouselDots from "../CarouselDots/CarouselDots"
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner"
 import { useState } from "react"
 
 const Carousel = ({authors}) => {
@@ -21,6 +22,10 @@ const Carousel = ({authors}) => {
         setActiveAuthor(prev => prev + 1)
     }
 
+    if (authors.length === 0) {
+        return <Card className="carousel"><LoadingSpinner /></Card>
+    }
+
     return <Card className="carousel">
             <button className="carousel-btn" onClick={onLeft}>{"<"}</button>
              <AuthorCard {...author} /> 
@@ -29,4 +34,4 @@ const Carousel = ({authors}) => {
            </Card>
 }
 
-export default Carousel
+export default Carousel;

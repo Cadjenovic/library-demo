@@ -13,7 +13,8 @@ const Book = ({id, name, author, cover, synopsis, review, changeReview, deleteBo
         <button className="book-delete-btn" onClick={() => deleteBook(id)}>X</button>
         <img className="book-cover" src={cover} alt={name} />
         <div className="book-info">
-            <h2 className="book-author">{author}</h2>
+            <h2 className="book-author">{name}</h2>
+            <h3 className="book-author">{author}</h3>
             <p className="book-synopsis">{synopsis}</p>
             <Stars review={review} changeReview={changeReview2}/>
         </div>

@@ -7,7 +7,7 @@ const CarouselDots = ({length, active}) => {
     const dots = [];
 
     for (let i = 0; i < length; i++) {
-        dots.push(<CarouselDot active={active === i} />)
+        dots.push(<CarouselDot key={i} active={active === i} />)
     }
 
     return <div className="dots">{dots}</div>

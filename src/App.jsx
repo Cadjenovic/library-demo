@@ -100,8 +100,11 @@ function App() {
   useEffect(() => {
     const books = JSON.parse(localStorage.getItem('books'))
     const authors = JSON.parse(localStorage.getItem('authors'))
-    setBooks(books)
-    setAuthors(authors)
+    setTimeout(() => {
+      setBooks(books)
+      setAuthors(authors)
+    }, 5000)
+    
   }, [])
 
 
