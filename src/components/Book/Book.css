@@ -1,0 +1,23 @@
+.book-card {
+    display: flex;
+    gap: 50px;
+    width: 500px;
+    height: 300px;
+    border: 2px solid black;
+}
+
+.book-cover {
+    height: 300px;
+    width: 200px;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    height: 100%;
+}
+
+.book-review {
+    /* justify-self: flex-end; */
+}
