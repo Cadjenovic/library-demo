@@ -1,5 +1,6 @@
 import './App.css'
 
+import AddBookForm from './components/AddBookForm/AddBookForm';
 import BookContainer from './components/BookContainer/BookContainer';
 import { useState } from 'react'
 
@@ -50,8 +51,13 @@ function App() {
 
   const [books, setBooks] = useState(INITIAL_BOOKS);
 
+  const addBook = (book) => {
+    const newBook = {id:books.length + 1, ...book}
+    setBooks([...books, newBook])
+  }
 
-  return <div><BookContainer books={books}/></div>
+
+  return <div><AddBookForm addBook={addBook}/><BookContainer books={books}/></div>
 }
 
 export default App

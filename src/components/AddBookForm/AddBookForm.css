@@ -1,0 +1,19 @@
+.form-wrapper {
+    border: 2px solid black;
+    margin: 50px;
+    padding: 50px;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 20px;
+}
+
+.form-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px
+}
