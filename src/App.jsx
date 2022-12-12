@@ -1,6 +1,7 @@
 import './App.css'
 
 import Book from './components/Book/Book';
+import BookContainer from './components/BookContainer/BookContainer';
 import { useState } from 'react'
 
 const INITIAL_BOOKS = [
@@ -16,7 +17,7 @@ const INITIAL_BOOKS = [
     id: '2',
     name: 'Kafka on the Shore',
     author: 'Haruki Murakami',
-    cover: "",
+    cover: "https://www.knjizare-vulkan.rs/files/watermark/files/images/slike_proizvoda/thumbs_w/223804_w.jpg",
     synopsis: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
     review: '0'
   },
@@ -32,7 +33,7 @@ const INITIAL_BOOKS = [
     id: '4',
     name: 'Demian',
     author: 'Herman Hesse',
-    cover: "",
+    cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/afd44046577977.585a19223ddc4.jpg",
     synopsis: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
     review: '0'
   },
@@ -40,7 +41,7 @@ const INITIAL_BOOKS = [
     id: '5',
     name: 'Siddhartha',
     author: 'Herman Hesse',
-    cover: "",
+    cover: "https://images.booksense.com/images/315/604/9781800604315.jpg",
     synopsis: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
     review: '0'
   },
@@ -50,9 +51,8 @@ function App() {
 
   const [books, setBooks] = useState(INITIAL_BOOKS);
 
-  const book = books[0];
 
-  return <div><Book name={book.name} author={book.author} cover={book.cover} synopsis={book.synopsis} review={book.review}/></div>
+  return <div><BookContainer books={books}/></div>
 }
 
 export default App

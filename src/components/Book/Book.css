@@ -3,12 +3,12 @@
     gap: 50px;
     width: 500px;
     height: 300px;
+    padding: 20px;
     border: 2px solid black;
 }
 
 .book-cover {
-    height: 300px;
-    width: 200px;
+    height: 250px !important;
 }
 
 .book-info {
