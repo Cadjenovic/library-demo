@@ -1,5 +1,6 @@
 import "./AddBookForm.css"
 
+import Card from "../Card/Card"
 import { useState } from "react"
 
 const AddBookForm = ({addBook}) => {
@@ -42,7 +43,7 @@ const AddBookForm = ({addBook}) => {
         setReview(event.target.value)
     }
 
-    return <div className="form-wrapper">
+    return <Card className="form-wrapper">
         <form className="form" onSubmit={onAddBookSubmitHandler}>
             <div className="form-item">
                 <label>Name</label>
@@ -68,7 +69,7 @@ const AddBookForm = ({addBook}) => {
                 <input type="submit" value="Add Book" />
             </div>
         </form>
-    </div>
+        </Card>
 }
 
 export default AddBookForm;

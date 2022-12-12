@@ -5,6 +5,7 @@
     height: 300px;
     padding: 20px;
     border: 2px solid black;
+    position: relative;
 }
 
 .book-cover {
@@ -20,4 +21,12 @@
 
 .book-review {
     /* justify-self: flex-end; */
+}
+
+.book-delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
 }

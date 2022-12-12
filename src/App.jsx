@@ -53,6 +53,11 @@ function App() {
     localStorage.setItem('books', JSON.stringify(INITIAL_BOOKS))
   }
 
+  const setStateAndStorage = (books) => {
+    localStorage.setItem('books', JSON.stringify(books))
+    setBooks(books)
+  }
+
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -63,12 +68,33 @@ function App() {
 
   const addBook = (book) => {
     const newBook = {id:books.length + 1, ...book}
-    localStorage.setItem('books', JSON.stringify([...books, newBook]))
-    setBooks([...books, newBook])
+    setStateAndStorage([...books, newBook])
+  }
+
+  const deleteBook = (bookId) => {
+    const booksCopy = [...books]
+    const newBooks = booksCopy.filter(book => book.id !== bookId)
+    setStateAndStorage(newBooks)
+  }
+
+  const changeReview = (bookId, newReview) => {
+    const booksCopy = [...books]
+    for(const book of booksCopy) {
+      if (book.id === bookId) {
+        book.review = newReview;
+        break;
+      }
+    }
+
+    setStateAndStorage(booksCopy)
   }
 
 
-  return <div><AddBookForm addBook={addBook}/><BookContainer books={books}/></div>
+  return <div>
+            <button onClick={loadLocalStorage}>Load Storage</button>
+            <AddBookForm addBook={addBook}/>
+            <BookContainer books={books} changeReview={changeReview} deleteBook={deleteBook}/>
+          </div>
 }
 
 export default App
