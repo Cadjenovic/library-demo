@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react'
 
 import AddBookForm from './components/AddBookForm/AddBookForm';
 import BookContainer from './components/BookContainer/BookContainer';
+import Carousel from './components/Carousel/Carousel';
 
 function App() {
 
-  const loadLocalStorage = () => {
+  const loadBooksLocalStorage = () => {
     const INITIAL_BOOKS = [
       {
         id: '1',
@@ -53,28 +54,66 @@ function App() {
     localStorage.setItem('books', JSON.stringify(INITIAL_BOOKS))
   }
 
-  const setStateAndStorage = (books) => {
+  const loadAuthorsLocalStorage = () => {
+    const INITIAL_AUTHORS = [
+      {
+        id: '1',
+        name: 'Haruki Murakami',
+        image: 'https://media.npr.org/assets/img/2021/04/05/haruki-murakami-author-photo-elena-seibert_custom-587c056cd651b2521ccbe0e1efd2a6f563e0b7eb.jpg',
+        synopsis: 'Lorem Ipsum',
+        yearBorn: '1990',
+        yearDied: ''
+      },
+      {
+        id: '2',
+        name: 'Herman Hesse',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Hermann_Hesse_2.jpg',
+        synopsis: 'Lorem Ipsum',
+        yearBorn: '1990',
+        yearDied: '2020'
+      },
+      {
+        id: '3',
+        name: 'George Orwell',
+        image: 'https://images2.minutemediacdn.com/image/upload/c_fill,w_1440,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/546150-flickr-41928180381-de04c41049-o-d2094143e22c623ab2be33b2268bad79.jpg',
+        synopsis: 'Lorem Ipsum',
+        yearBorn: '1975',
+        yearDied: '1980'
+      }
+    ]
+    localStorage.setItem('authors', JSON.stringify(INITIAL_AUTHORS))
+  }
+
+  const setBooksStateAndStorage = (books) => {
     localStorage.setItem('books', JSON.stringify(books))
     setBooks(books)
   }
 
+  const setAuthorsStateAndStorage = (authors) => {
+    localStorage.setItem('authors', JSON.stringify(authors))
+    setAuthors(authors)
+  }
+
   const [books, setBooks] = useState([]);
+  const [authors, setAuthors] = useState([])
 
   useEffect(() => {
     const books = JSON.parse(localStorage.getItem('books'))
+    const authors = JSON.parse(localStorage.getItem('authors'))
     setBooks(books)
+    setAuthors(authors)
   }, [])
 
 
   const addBook = (book) => {
     const newBook = {id:books.length + 1, ...book}
-    setStateAndStorage([...books, newBook])
+    setBooksStateAndStorage([...books, newBook])
   }
 
   const deleteBook = (bookId) => {
     const booksCopy = [...books]
     const newBooks = booksCopy.filter(book => book.id !== bookId)
-    setStateAndStorage(newBooks)
+    setBooksStateAndStorage(newBooks)
   }
 
   const changeReview = (bookId, newReview) => {
@@ -86,14 +125,16 @@ function App() {
       }
     }
 
-    setStateAndStorage(booksCopy)
+    setBooksStateAndStorage(booksCopy)
   }
 
 
   return <div>
-            <button onClick={loadLocalStorage}>Load Storage</button>
-            <AddBookForm addBook={addBook}/>
-            <BookContainer books={books} changeReview={changeReview} deleteBook={deleteBook}/>
+            <button onClick={loadBooksLocalStorage}>Load Books</button>
+            <button onClick={loadAuthorsLocalStorage}>Load Authors</button>
+            <Carousel authors={authors} />
+            <AddBookForm addBook={addBook} />
+            <BookContainer books={books} changeReview={changeReview} deleteBook={deleteBook} />
           </div>
 }
 

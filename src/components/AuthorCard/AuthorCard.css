@@ -1,0 +1,25 @@
+.author-card {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    gap:50px;
+}
+
+.author-img {
+    width: 200px;
+    height: 300px;
+}
+
+.author-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 20px;
+}
